@@ -1,12 +1,12 @@
-Qmain: QuickSort/main.c QuickSort.o util.o
+QuickSortMain: QuickSort/main.c QuickSort.o util.o
 	gcc QuickSort/main.c QuickSort.o util.o -o QuickSortMain
-Mmain: MergeSort/main.c MergeSort.o util.o
+MergeSortMain: MergeSort/main.c MergeSort.o util.o
 	gcc MergeSort/main.c MergeSort.o util.o -o MergeSortMain
-Rmain: RadixSort/main.c RadixSort.o util.o
+RadixSortMain: RadixSort/main.c RadixSort.o util.o
 	gcc RadixSort/main.c RadixSort.o util.o -g -o RadixSortMain
-Hmain: HeapSort/main.c HeapSort.o util.o
+HeapSortMain: HeapSort/main.c HeapSort.o util.o
 	gcc HeapSort/main.c HeapSort.o util.o -g -o HeapSortMain
-Gen: GenRand/main.c util.o
+GenRandMain: GenRand/main.c util.o
 	gcc GenRand/main.c util.o -o GenRandMain
 QuickSort.o: QuickSort/QuickSort.c QuickSort/QuickSort-H.h
 	gcc -c QuickSort/QuickSort.c -o QuickSort.o
@@ -37,6 +37,7 @@ cleanR:
 cleanH:
 	rm -f HeapSort.o HeapSortMain
 cleanRand:
-	rm -f RandGen
+	rm -f GenRandMain
 cleanALL: cleanU cleanQ cleanM cleanR cleanH cleanRand
-	rm -rf *.dSYM *.txt
+	find . -name "*.txt" -type f -delete
+	find . -name "*.dSYM" -type f -delete
