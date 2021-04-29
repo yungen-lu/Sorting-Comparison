@@ -15,26 +15,24 @@ void printArrStr(char **arr, int len) {
     }
 }
 int *scanArrNum(char *filename, int len) {
-    int i = 0;
     FILE *fptr;
     int *arrOfNum = (int *)calloc(len + 1, sizeof(int));
     fptr = fopen(filename, "r");
-    while (fscanf(fptr, "%d", &arrOfNum[i]) != EOF) {
-        i++;
+    for (int j = 0; j < len; j++) {
+        fscanf(fptr, "%d", &arrOfNum[j]);
     }
     fclose(fptr);
     return arrOfNum;
 }
 char **scanArrStr(char *filename, int len) {
-    int i = 0;
     FILE *fptr;
     char **arrOfStr = (char **)calloc(len + 1, sizeof(char *));
     for (int j = 0; j < len; j++) {
         arrOfStr[j] = (char *)calloc(20, sizeof(char));
     }
     fptr = fopen(filename, "r");
-    while (fscanf(fptr, "%s", arrOfStr[i]) != EOF) {
-        i++;
+    for (int j = 0; j < len; j++) {
+        fscanf(fptr, "%s", arrOfStr[j]);
     }
     fclose(fptr);
     return arrOfStr;
