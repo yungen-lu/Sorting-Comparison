@@ -6,7 +6,7 @@
 #include <string.h>
 void printArr(int *arr, int len) {
     for (int i = 0; i < len; i++) {
-        printf("%d", arr[i]);
+        printf("%d\n", arr[i]);
     }
 }
 void printArrStr(char **arr, int len) {
@@ -18,6 +18,9 @@ int *scanArrNum(char *filename, int len) {
     FILE *fptr;
     int *arrOfNum = (int *)calloc(len + 1, sizeof(int));
     fptr = fopen(filename, "r");
+    if (fptr == NULL) {
+        fprintf(stderr, "can not scan file\n");
+    }
     for (int j = 0; j < len; j++) {
         fscanf(fptr, "%d", &arrOfNum[j]);
     }
@@ -31,11 +34,24 @@ char **scanArrStr(char *filename, int len) {
         arrOfStr[j] = (char *)calloc(20, sizeof(char));
     }
     fptr = fopen(filename, "r");
+    if (fptr == NULL) {
+        fprintf(stderr, "can not scan file\n");
+    }
     for (int j = 0; j < len; j++) {
         fscanf(fptr, "%s", arrOfStr[j]);
     }
     fclose(fptr);
     return arrOfStr;
+}
+void writeResault(char *fileName, char *sorttype, int length, char *test_type, double resault) {
+    FILE *fptr;
+    fptr = fopen(fileName, "a");
+    if (fptr == NULL) {
+        fprintf(stderr, "can not write to file\n");
+    }
+    // type | length | test_type(-s/-n) | time
+    fprintf(fptr, "%s %d %s %f\n", sorttype, length, test_type, resault);
+    fclose(fptr);
 }
 int getFLAG(char *string) {
     if (strcmp(string, "-n") == 0)
@@ -58,7 +74,7 @@ int checkArg(char *arr[]) {
 }
 arg *getArg(char **arr) {
     arg *new = (arg *)malloc(sizeof(arg));
-    new->fileName = (char *)malloc(sizeof(char) * 10);
+    new->fileName = (char *)malloc(sizeof(char) * 40);
     strcpy(new->fileName, arr[1]);
     new->fileType = getFLAG(arr[2]);
     sscanf(arr[3], "%d", &new->len);

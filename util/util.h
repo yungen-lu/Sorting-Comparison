@@ -12,4 +12,4 @@ typedef struct {
     int fileType;
     int len;
 } arg;
-arg * getArg(char **arr);
+arg *getArg(char **arr);
