@@ -22,12 +22,17 @@ int main(int argc, char *argv[]) {
         _quickSort(ret, 0, arguments->len - 1, cmpnum, sizeof(int));
         gettimeofday(&tv, NULL);
         elapsed = ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
-        printf("|%f|\n", elapsed);
+        /* printf("|%f|\n", elapsed); */
+        writeResault("output/QuickSortResult.txt", "QuickSort", arguments->len, "number", elapsed);
         /* printArr(ret, arguments->len); */
     } else if (arguments->fileType == 2) {
         char **ret = scanArrStr(arguments->fileName, arguments->len);
+        gettimeofday(&start_tv, NULL);
         _quickSort(ret, 0, arguments->len - 1, cmpstr, sizeof(char *));
-        printArrStr(ret, arguments->len);
+        gettimeofday(&tv, NULL);
+        elapsed = ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
+        writeResault("output/QuickSortResult.txt", "QuickSort", arguments->len, "string", elapsed);
+        /* printArrStr(ret, arguments->len); */
     } else {
         exit(1);
     }

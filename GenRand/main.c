@@ -9,7 +9,7 @@ void randWriteNum(int count, char *fileName) {
     fptr = fopen(fileName, "w");
     srand(time(0));
     for (int i = 0; i < count; i++) {
-        fprintf(fptr, "%d ", rand());
+        fprintf(fptr, "%d \n", rand());
     }
     fclose(fptr);
 }
@@ -33,12 +33,13 @@ void randWriteStr(int len, int count, char *fileName) {
 
             randomString[len] = '\0';
         }
-        printf("%s\n", randomString);
-        fprintf(fptr, "%s\n", randomString);
+        /* printf("%s\n", randomString); */
+        fprintf(fptr, "%s \n", randomString);
         free(randomString);
     }
     fclose(fptr);
 }
+// output_type | len | fileName
 int main(int argc, char *argv[]) {
     int NUM = 0;
     int FLAG = getFLAG(argv[1]);
