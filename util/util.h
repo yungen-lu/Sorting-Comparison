@@ -8,8 +8,10 @@ int cmpnum(void *s1, void *s2);
 int checkArg(char *arr[]);
 void _swap(void *v1, void *v2, int size);
 typedef struct {
-    char *fileName;
-    int fileType;
+    char *fileName1;
+    char *fileName2;
+    /* int fileType; */
     int len;
 } arg;
 arg *getArg(char **arr);
+void writeResault(char *fileName, char *sorttype, int length, double resaultStr, double resaultNum);
