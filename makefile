@@ -1,3 +1,4 @@
+all: QuickSortMain MergeSortMain RadixSortMain HeapSortMain GenRandMain
 QuickSortMain: QuickSort/main.c QuickSort.o util.o
 	gcc QuickSort/main.c QuickSort.o util.o -o QuickSortMain
 MergeSortMain: MergeSort/main.c MergeSort.o util.o
@@ -40,4 +41,4 @@ cleanRand:
 	rm -f GenRandMain
 cleanALL: cleanU cleanQ cleanM cleanR cleanH cleanRand
 	find . -name "*.txt" -type f -delete
-	find . -name "*.dSYM" -type f -delete
+	find . -name "*.dSYM" -type d -delete
