@@ -69,7 +69,7 @@ execTests(){
     for((i=$startingLen; i <= $endingLen; i=i+$interval)); do
         # echo $i
         $1 output/$i-string.txt "-s" $i
-        # $1 output/$i-number.txt "-n" $i
+        $1 output/$i-number.txt "-n" $i
         # $1 output/$i-number.txt output/$i-string.txt $i
     done
     echo "done excuting"
@@ -97,7 +97,7 @@ checkOutputDir
 # echo $Type
 getLen
 # genRand
-# execTests "./MergeSortMain"
-# execTests "./QuickSortMain"
-# execTests "./HeapSortMain"
+execTests "./MergeSortMain"
+execTests "./QuickSortMain"
+execTests "./HeapSortMain"
 execTests "./RadixSortMain"
