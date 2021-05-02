@@ -42,7 +42,7 @@ def insertToDB(p,fileobjs,tableNames):
 
 c = newConnection()
 valueName = ["sortingtype","length","datatype","time"]
-valueType = f"({valueName[0]} VARCHAR(50), {valueName[1]} INTEGER, {valueName[2]} VARCHAR(50), {valueName[3]} float(6))"
+valueType = f"(id serial PRIMARY KEY, {valueName[0]} VARCHAR(50), {valueName[1]} INTEGER, {valueName[2]} VARCHAR(50), {valueName[3]} float(6))"
 # s = newTable("tablesort1",c,valueType)
 # s.createTable()
 # filenames = ["../output/QuickSortResult.txt","../output/MergeSortResult.txt","../output/HeapSortResult.txt","../output/RadixSortResult.txt"]
