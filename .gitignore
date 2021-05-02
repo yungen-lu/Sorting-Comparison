@@ -4,3 +4,11 @@
 test*
 .vscode
 *.o
+
+data/.env
+GenRandMain
+MergeSortMain
+HeapSortMain
+QuickSortMain
+.swp
+RadixSortMain
