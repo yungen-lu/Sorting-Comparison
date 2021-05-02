@@ -43,13 +43,20 @@ def insertToDB(p,fileobjs,tableNames):
 c = newConnection()
 valueName = ["sortingtype","length","datatype","time"]
 valueType = f"(id serial PRIMARY KEY, {valueName[0]} VARCHAR(50), {valueName[1]} INTEGER, {valueName[2]} VARCHAR(50), {valueName[3]} float(6))"
-# s = newTable("tablesort1",c,valueType)
-# s.createTable()
-# filenames = ["../output/QuickSortResult.txt","../output/MergeSortResult.txt","../output/HeapSortResult.txt","../output/RadixSortResult.txt"]
-tableNames = ["QuickSortResult","MergeSortResult","HeapSortResult", "RadixSortResult"]
-fobj = openFile(tableNames)
-# insertValues(s,fobj,filenames)
-checkTableExist(c,tableNames)
-insertToDB(c,fobj,tableNames)
-closeFile(fobj,tableNames)
+file = open("../output/Result.txt")
+if c.checkTableExist("Result") == False:
+    s = newTable("Result",c,valueType)
+    s.createTable()
+else:
+    s = newTable("Result",c,valueType)
+listOfString = file.read().splitlines()
+for var in listOfString:
+    token = var.split(" ")
+    s.insertFourValues(token,valueName)
+file.close()
+# tableNames = ["QuickSortResult","MergeSortResult","HeapSortResult", "RadixSortResult"]
+# fobj = openFile(tableNames)
+# checkTableExist(c,tableNames)
+# insertToDB(c,fobj,tableNames)
+# closeFile(fobj,tableNames)
 c.closeConnection()
