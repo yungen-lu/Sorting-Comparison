@@ -40,5 +40,6 @@ cleanH:
 cleanRand:
 	rm -f GenRandMain
 cleanALL: cleanU cleanQ cleanM cleanR cleanH cleanRand
+cleanTxt:
 	find . -name "*.txt" -type f -delete
 	find . -name "*.dSYM" -type d -delete
