@@ -29,9 +29,9 @@ int *scanArrNum(char *filename, int len) {
 }
 char **scanArrStr(char *filename, int len) {
     FILE *fptr;
-    char **arrOfStr = (char **)calloc(len + 1, sizeof(char *));
+    char **arrOfStr = (char **)malloc((len + 1)* sizeof(char *));
     for (int j = 0; j < len; j++) {
-        arrOfStr[j] = (char *)calloc(20, sizeof(char));
+        arrOfStr[j] = (char *)malloc(101 * sizeof(char));
     }
     fptr = fopen(filename, "r");
     if (fptr == NULL) {
