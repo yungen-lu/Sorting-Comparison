@@ -43,14 +43,14 @@ char **scanArrStr(char *filename, int len) {
     fclose(fptr);
     return arrOfStr;
 }
-void writeResault(char *fileName, char *sorttype, int length, double resaultStr, double resaultNum) {
+void writeResault(char *fileName, char *sorttype, int length, char* datatype, double resaultNum) {
     FILE *fptr;
     fptr = fopen(fileName, "a");
     if (fptr == NULL) {
         fprintf(stderr, "can not write to file\n");
     }
     // type | length | time(string) | time(number)
-    fprintf(fptr, "%s %d %f %f\n", sorttype, length, resaultStr, resaultNum);
+    fprintf(fptr, "%s %d %s %f\n", sorttype, length, datatype, resaultNum);
     fclose(fptr);
 }
 int getFLAG(char *string) {
@@ -74,12 +74,12 @@ int checkArg(char *arr[]) {
 }
 arg *getArg(char **arr) {
     arg *new = (arg *)malloc(sizeof(arg));
-    new->fileName1 = (char *)malloc(sizeof(char) * 40);
-    new->fileName2 = (char *)malloc(sizeof(char) * 40);
+    new->fileName = (char *)malloc(sizeof(char) * 40);
+    /* new->fileName2 = (char *)malloc(sizeof(char) * 40); */
 
-    strcpy(new->fileName1, arr[1]);
-    strcpy(new->fileName2, arr[2]);
-    /* new->fileType = getFLAG(arr[2]); */
+    strcpy(new->fileName, arr[1]);
+    /* strcpy(new->fileName2, arr[2]); */
+    new->fileType = getFLAG(arr[2]);
     sscanf(arr[3], "%d", &new->len);
     return new;
 }

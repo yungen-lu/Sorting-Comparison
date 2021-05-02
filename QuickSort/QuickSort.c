@@ -14,6 +14,27 @@ void _quickSort(void *ptrToArray, int start, int end, int (*ptrToFunc)(void *a, 
         _quickSort(ptrToArray, start, ret - 1, ptrToFunc, size);
         _quickSort(ptrToArray, ret + 1, end, ptrToFunc, size);
     }
+/*     int i,j,pivot, tmp; */
+/*     if (start < end) { */
+/*         pivot=start; */
+/*         i = start; */
+/*         j = end; */
+/*  */
+/*         while (i < j) { */
+/*             while ((*ptrToFunc)((char*)ptrToArray + i * size, (char*)ptrToArray + pivot * size) <= 0 && i < end) { */
+/*             i++; */
+/*             } */
+/*             while ((*ptrToFunc)((char *)ptrToArray + j * size,(char*)ptrToArray + pivot * size) > 0) { */
+/*             j--; */
+/*             } */
+/*             if (i < j) { */
+/*                 _swap((char*)ptrToArray + i * size, (char*)ptrToArray  + j * size, size); */
+/*             } */
+/*         } */
+/*         _swap((char*)ptrToArray + pivot * size, (char*)ptrToArray + j * size, size); */
+/*         _quickSort(ptrToArray, start, j - 1, ptrToFunc, size); */
+/*         _quickSort(ptrToArray, j + 1, end, ptrToFunc, size); */
+/*     } */
 }
 int _partition(void *ptrToArray, int start, int end, int (*ptrToFunc)(void *a, void *b), int size) {
     int pivot = start;
@@ -22,17 +43,17 @@ int _partition(void *ptrToArray, int start, int end, int (*ptrToFunc)(void *a, v
     /* void *t1 =  ptrToArray + (i * size); */
     /* void *t2 =  ptrToArray + (j * size); */
     while (i < j) {
-        while ((*ptrToFunc)( ptrToArray + i * size,  ptrToArray + pivot * size) <= 0 && i < end) {
+        while ((*ptrToFunc)((char*)ptrToArray + i * size,  (char*)ptrToArray + pivot * size) <= 0 && i < end) {
             i++;
         }
-        while ((*ptrToFunc)( ptrToArray + j * size,  ptrToArray + pivot * size) > 0 && j > start) {
+        while ((*ptrToFunc)( (char*)ptrToArray + j * size,  (char*)ptrToArray + pivot * size) > 0) {
             j--;
         }
         if (i < j) {
-            _swap( ptrToArray + i * size,  ptrToArray + j * size,size);
+            _swap( (char*)ptrToArray + i * size,  (char*)ptrToArray + j * size,size);
         }
     }
-    _swap( ptrToArray + pivot * size,  ptrToArray + j * size,size);
+    _swap( (char*)ptrToArray + pivot * size,  (char*)ptrToArray + j * size,size);
     return j;
 }
 

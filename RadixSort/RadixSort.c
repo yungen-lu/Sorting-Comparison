@@ -22,8 +22,8 @@ void myRadixSort(int *ptrToArray, int len) {
 }
 void countSort(int *orginalArr, int len, int e) {
     /* int *countArr = (int *)malloc((len + 1) * sizeof(int)); */
-    int i;
-    int countArr[10] = {0};
+    long int i;
+    long int countArr[10] = {0};
     /* int countArr[len] = {0}; */
     for (i = 0; i < len; i++) {
         countArr[(orginalArr[i] / e) % 10]++;
@@ -31,7 +31,8 @@ void countSort(int *orginalArr, int len, int e) {
     for (i = 1; i < 10; i++) {
         countArr[i] += countArr[i - 1];
     }
-    int output[len];
+    /* int output[len]; */
+    int *output=(int *)malloc(sizeof(int) * len);
     for (i = len - 1; i >= 0; i--) {
         output[countArr[(orginalArr[i] / e) % 10] - 1] = orginalArr[i];
         countArr[(orginalArr[i] / e) % 10]--;
@@ -74,15 +75,12 @@ void _countSort(char **orginalArr, int len, int e) {
     }
     /* char **output = (char **)malloc(len * sizeof(char *)); */
     for (long x = len - 1; x >= 0; x--) {
-        strcpy(output[countArr[(orginalArr[x][e] - 'A')] - 1], orginalArr[x]);
-        /* output[countArr[(orginalArr[x][e] - 'A')] - 1] = orginalArr[x]; */
+        /* strcpy(output[countArr[(orginalArr[x][e] - 'A')] - 1], orginalArr[x]); */
+        output[countArr[(orginalArr[x][e] - 'A')] - 1] = orginalArr[x];
         countArr[(orginalArr[x][e] - 'A')]--;
-        /* output[countArr[(orginalArr[x][e] - 'A')] - 1] = orginalArr[x]; */
-        /* countArr[(orginalArr[x] / e) % 10]--; */
     }
     for (int i = 0; i < len; i++) {
-        /* orginalArr[i] = output[i]; */
-        /* printf("|%s|\n",output[i]); */
-        strcpy(orginalArr[i], output[i]);
+        /* strcpy(orginalArr[i], output[i]); */
+        orginalArr[i] = output[i];
     }
 }
