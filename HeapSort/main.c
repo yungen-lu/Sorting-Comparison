@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         _heapSort(ret, arguments->len, cmpnum, sizeof(int));
         gettimeofday(&tv, NULL);
         elapsed = ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
-        writeResault("output/HeapSortResult.txt", "HeapSort", arguments->len, "number", elapsed);
+        writeResault("output/Result.txt", "HeapSort", arguments->len, "number", elapsed);
 
     } else if (arguments->fileType == 2) {
         char **retString = scanArrStr(arguments->fileName, arguments->len);
@@ -47,6 +47,6 @@ int main(int argc, char *argv[]) {
         _heapSort(retString, arguments->len, cmpstr, sizeof(char *));
         gettimeofday(&tv, NULL);
         elapsed = ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
-        writeResault("output/HeapSortResult.txt", "HeapSort", arguments->len, "string", elapsed);
+        writeResault("output/Result.txt", "HeapSort", arguments->len, "string", elapsed);
     }
 }

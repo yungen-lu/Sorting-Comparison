@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         _MergeSort(ret, 0, arguments->len - 1, cmpnum, sizeof(int));
         gettimeofday(&tv, NULL);
         elapsed= ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
-        writeResault("output/MergeSortResult.txt", "MergeSort", arguments->len, "number", elapsed);
+        writeResault("output/Result.txt", "MergeSort", arguments->len, "number", elapsed);
 
     } else if (arguments->fileType == 2) {
         char **retString = scanArrStr(arguments->fileName, arguments->len);
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
         gettimeofday(&tv, NULL);
         elapsed= ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
 
-        writeResault("output/MergeSortResult.txt", "MergeSort", arguments->len, "string", elapsed);
+        writeResault("output/Result.txt", "MergeSort", arguments->len, "string", elapsed);
     }
     return 0;
 }
