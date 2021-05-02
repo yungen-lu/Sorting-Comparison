@@ -42,8 +42,8 @@ void countSort(int *orginalArr, int len, int e) {
     }
 }
 void _RadixSort(char **ptrToArray, int len) {
-    /* int i = _max(ptrToArray, len); */
-    int i = 8;
+    int i = _max(ptrToArray, len);
+    /* int i = 8; */
     for (i -= 1; i >= 0; i--) {
         _countSort(ptrToArray, len, i);
     }
