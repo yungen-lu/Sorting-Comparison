@@ -40,7 +40,6 @@ void _Merge(void *ptrToArray, int start, int mid, int end, int (*ptrToFunc)(void
     int j = 0;
     for (int i = start; i <= end; i++) {
         *((char *)ptrToArray + i * size) = *((char *)tmp + j++ * size);
-        /* ptrToArray[i] = tmp[j++]; */
     }
 }
 void myMerge(int *ptrToArray, int start, int mid, int end) {
@@ -68,3 +67,4 @@ void myMerge(int *ptrToArray, int start, int mid, int end) {
         ptrToArray[i] = tmp[j++];
     }
 }
+

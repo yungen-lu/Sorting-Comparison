@@ -9,9 +9,9 @@ int checkArg(char *arr[]);
 void _swap(void *v1, void *v2, int size);
 typedef struct {
     char *fileName;
-    /* char *fileName2; */
     int fileType;
     int len;
 } arg;
 arg *getArg(char **arr);
 void writeResault(char *fileName, char *sorttype, int length, char* datatype, double resaultNum);
+

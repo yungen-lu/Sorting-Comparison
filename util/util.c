@@ -29,7 +29,7 @@ int *scanArrNum(char *filename, int len) {
 }
 char **scanArrStr(char *filename, int len) {
     FILE *fptr;
-    char **arrOfStr = (char **)malloc((len + 1)* sizeof(char *));
+    char **arrOfStr = (char **)malloc((len + 1) * sizeof(char *));
     for (int j = 0; j < len; j++) {
         arrOfStr[j] = (char *)malloc(101 * sizeof(char));
     }
@@ -43,7 +43,7 @@ char **scanArrStr(char *filename, int len) {
     fclose(fptr);
     return arrOfStr;
 }
-void writeResault(char *fileName, char *sorttype, int length, char* datatype, double resaultNum) {
+void writeResault(char *fileName, char *sorttype, int length, char *datatype, double resaultNum) {
     FILE *fptr;
     fptr = fopen(fileName, "a");
     if (fptr == NULL) {
@@ -75,10 +75,7 @@ int checkArg(char *arr[]) {
 arg *getArg(char **arr) {
     arg *new = (arg *)malloc(sizeof(arg));
     new->fileName = (char *)malloc(sizeof(char) * 40);
-    /* new->fileName2 = (char *)malloc(sizeof(char) * 40); */
-
     strcpy(new->fileName, arr[1]);
-    /* strcpy(new->fileName2, arr[2]); */
     new->fileType = getFLAG(arr[2]);
     sscanf(arr[3], "%d", &new->len);
     return new;
@@ -95,14 +92,9 @@ int cmpnum(void *s1, void *s2) {
 }
 
 void _swap(void *v1, void *v2, int size) {
-    // buffer is array of characters which will
-    // store element byte by byte
     char buffer[size];
-
-    // memcpy will copy the contents from starting
-    // address of v1 to length of size in buffer
-    // byte by byte.
     memcpy(buffer, v1, size);
     memcpy(v1, v2, size);
     memcpy(v2, buffer, size);
 }
+
