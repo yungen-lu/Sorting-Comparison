@@ -3,8 +3,8 @@ int *scanArrNum(char *string, int len);
 char **scanArrStr(char *filename, int len);
 void printArrStr(char **arr, int len);
 int getFLAG(char *string);
-int cmpstr(void *v1, void *v2);
-int cmpnum(void *s1, void *s2);
+int cmpStr(void *v1, void *v2);
+int cmpNum(void *s1, void *s2);
 int checkArg(char *arr[]);
 void _swap(void *v1, void *v2, int size);
 typedef struct {
@@ -13,5 +13,4 @@ typedef struct {
     int len;
 } arg;
 arg *getArg(char **arr);
-void writeResault(char *fileName, char *sorttype, int length, char* datatype, double resaultNum);
-
+void writeResault(char *fileName, char *sorttype, int length, char *datatype, double resaultNum);

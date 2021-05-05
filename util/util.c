@@ -80,21 +80,20 @@ arg *getArg(char **arr) {
     sscanf(arr[3], "%d", &new->len);
     return new;
 }
-int cmpstr(void *v1, void *v2) {
-    char *a1 = *(char **)v1;
-    char *a2 = *(char **)v2;
-    return strcmp(a1, a2);
+int cmpStr(void *a, void *b) {
+    char *a1 = *(char **)a;
+    char *b1 = *(char **)b;
+    return strcmp(a1, b1);
 }
-int cmpnum(void *s1, void *s2) {
-    int *a = (int *)s1;
-    int *b = (int *)s2;
-    return *a - *b;
+int cmpNum(void *a, void *b) {
+    int *a1 = (int *)a;
+    int *b1 = (int *)b;
+    return *a1 - *b1;
 }
 
-void _swap(void *v1, void *v2, int size) {
+void _swap(void *a, void *b, int size) {
     char buffer[size];
-    memcpy(buffer, v1, size);
-    memcpy(v1, v2, size);
-    memcpy(v2, buffer, size);
+    memcpy(buffer, a, size);
+    memcpy(a, b, size);
+    memcpy(b, buffer, size);
 }
-

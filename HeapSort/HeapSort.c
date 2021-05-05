@@ -25,4 +25,3 @@ void _heapSort(void *ptrToArray, int length, int (*ptrToFunc)(void *a, void *b),
         _heapify(ptrToArray, i, 0, ptrToFunc, size);
     }
 }
-

@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     if (arguments->fileType == 1) {
         int *ret = scanArrNum(arguments->fileName, arguments->len);
         gettimeofday(&start_tv, NULL);
-        _quickSort(ret, 0, arguments->len - 1, cmpnum, sizeof(int));
+        _quickSort(ret, 0, arguments->len - 1, cmpNum, sizeof(int));
         gettimeofday(&tv, NULL);
         elapsed = ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
         writeResault("output/Result.txt", "QuickSort", arguments->len, "number", elapsed);
@@ -23,11 +23,10 @@ int main(int argc, char *argv[]) {
     } else if (arguments->fileType == 2) {
         char **retString = scanArrStr(arguments->fileName, arguments->len);
         gettimeofday(&start_tv, NULL);
-        _quickSort(retString, 0, arguments->len - 1, cmpstr, sizeof(char *));
+        _quickSort(retString, 0, arguments->len - 1, cmpStr, sizeof(char *));
         gettimeofday(&tv, NULL);
         elapsed = ((tv.tv_sec - start_tv.tv_sec) + (tv.tv_usec - start_tv.tv_usec) / 1000000.0);
         writeResault("output/Result.txt", "QuickSort", arguments->len, "string", elapsed);
     }
     return 0;
 }
-

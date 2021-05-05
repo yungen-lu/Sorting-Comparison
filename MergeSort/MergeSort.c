@@ -6,7 +6,7 @@ void _MergeSort(void *ptrToArray, int start, int end, int (*ptrToFunc)(void *a, 
         int mid = (start + end) / 2;
         _MergeSort(ptrToArray, start, mid, ptrToFunc, size);
         _MergeSort(ptrToArray, mid + 1, end, ptrToFunc, size);
-        _Merge(ptrToArray,start,mid,end,ptrToFunc,size);
+        _Merge(ptrToArray, start, mid, end, ptrToFunc, size);
     }
 }
 void _Merge(void *ptrToArray, int start, int mid, int end, int (*ptrToFunc)(void *a, void *b), int size) {
