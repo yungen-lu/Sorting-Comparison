@@ -188,7 +188,7 @@
    ![QuickSort](asset/png/QuickSort.png)
 
    * 時間複雜度：big-O(nlogn)
-   * 空間複雜度： big-O(nlogn)
+   * 空間複雜度： big-O(1)
 
 2. MergeSort
 
