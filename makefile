@@ -1,4 +1,4 @@
-all: util.o QuickSortMain MergeSortMain RadixSortMain HeapSortMain GenRandMain
+all: QuickSortMain MergeSortMain RadixSortMain HeapSortMain GenRandMain
 QuickSortMain: QuickSort/main.c QuickSort.o util.o
 	gcc QuickSort/main.c QuickSort.o util.o -o QuickSortMain
 MergeSortMain: MergeSort/main.c MergeSort.o util.o
