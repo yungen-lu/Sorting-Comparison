@@ -31,14 +31,14 @@ char **scanArrStr(char *filename, int len) {
     FILE *fptr;
     char **arrOfStr = (char **)malloc((len + 1) * sizeof(char *));
     for (int j = 0; j < len; j++) {
-        arrOfStr[j] = (char *)malloc(101 * sizeof(char));
+        arrOfStr[j] = (char *)malloc(102 * sizeof(char));
     }
     fptr = fopen(filename, "r");
     if (fptr == NULL) {
         fprintf(stderr, "can not scan file\n");
     }
     for (int j = 0; j < len; j++) {
-        fscanf(fptr, "%s", arrOfStr[j]);
+        fscanf(fptr, "%101s", arrOfStr[j]);
     }
     fclose(fptr);
     return arrOfStr;
