@@ -4,21 +4,28 @@
 
 #include "../util/util.h"
 
-void randWriteNum(int count, char *fileName) {
+void randWriteNum(int count, const char *fileName) {
     FILE *fptr;
     fptr = fopen(fileName, "w");
+    if (fptr == NULL) {
+        fprintf(stderr, "can not scan file\n");
+        return;
+    }
     srand(time(0));
     for (int i = 0; i < count; i++) {
         fprintf(fptr, "%d\n", rand());
     }
     fclose(fptr);
 }
-void randWriteStr(int len, int count, char *fileName) {
+void randWriteStr(int len, int count, const char *fileName) {
     char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     char *randomString;
     FILE *fptr;
     fptr = fopen(fileName, "w");
-
+    if (fptr == NULL) {
+        fprintf(stderr, "can not scan file\n");
+        return;
+    }
     srand(time(0));
     for (int i = 0; i < count; i++) {
         randomString = malloc(sizeof(char) * len + 1);
@@ -33,7 +40,6 @@ void randWriteStr(int len, int count, char *fileName) {
 
             randomString[len] = '\0';
         }
-        /* printf("%s\n", randomString); */
         fprintf(fptr, "%s\n", randomString);
         free(randomString);
     }

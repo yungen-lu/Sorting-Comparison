@@ -4,7 +4,7 @@
 
 #include "RadixSort-H.h"
 
-int max(int *ptrToArray, int l) {
+int max(const int *ptrToArray, int l) {
     int max = ptrToArray[0];
     for (int i = 1; i < l; i++) {
         if (ptrToArray[i] > max) {
@@ -15,8 +15,7 @@ int max(int *ptrToArray, int l) {
 }
 void myRadixSort(int *ptrToArray, int len) {
     int i = max(ptrToArray, len);
-    int e;
-    for (e = 1; 0 < i / e; e = e * 10) {
+    for (int e = 1; 0 < i / e; e = e * 10) {
         countSort(ptrToArray, len, e);
     }
 }
@@ -58,18 +57,18 @@ int _max(char **ptrToArray, int len) {
 void _countSort(char **orginalArr, int len, int e) {
     int countArr[60] = {0};
     for (int i = 0; i < len; i++) {
-        countArr[(orginalArr[i][e] - 'A')]++;
+        countArr[orginalArr[i][e] - 'A']++;
     }
     for (int i = 1; i < 58; i++) {
         countArr[i] += countArr[i - 1];
     }
     char **output = (char **)malloc(sizeof(char *) * len);
-    for (long j = 0; j < len; j++) {
+    for (int j = 0; j < len; j++) {
         output[j] = (char *)malloc(sizeof(char) * 10);
     }
-    for (long x = len - 1; x >= 0; x--) {
-        output[countArr[(orginalArr[x][e] - 'A')] - 1] = orginalArr[x];
-        countArr[(orginalArr[x][e] - 'A')]--;
+    for (int x = len - 1; x >= 0; x--) {
+        output[countArr[orginalArr[x][e] - 'A'] - 1] = orginalArr[x];
+        countArr[orginalArr[x][e] - 'A']--;
     }
     for (int i = 0; i < len; i++) {
         orginalArr[i] = output[i];

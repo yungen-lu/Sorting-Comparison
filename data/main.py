@@ -1,6 +1,6 @@
-from dbmain import newConnection
-from dbmain import newTable
-def openFile(filenames):
+from dbmain import new_connection
+from dbmain import new_table
+def open_file(filenames):
     fobj={}
     try:
         for filename in filenames:
@@ -9,54 +9,26 @@ def openFile(filenames):
     except:
         print("can't open file")
         
-def closeFile(fobj,filenames):
+def close_file(fobj,filenames):
     try:
         for filename in filenames:
             fobj[filename].close()
     except:
         print("can't close file")
 
-def insertValues(conn,fileobjs,filenames):
-    # for filename in filenames:
-    #     listOfString = fileobjs[filename].read().splitlines()
-    #     for var in listOfString:
-    #         token = var.split(" ")
-    #         print(token)
-    #         conn.insertFourValues(token,valueName)
-    conn.insertFourValues()
-def checkTableExist(conn,tableNames):
-    for tablename in tableNames:
-        if conn.checkTableExist(tablename)==False:
-            s = newTable(tablename,conn,valueType)
-            s.createTable()
-def insertToDB(p,fileobjs,tableNames):
-    for tablename in tableNames:
-        # print(tablename)
-        s = newTable(tablename,p,valueType)
-        # insertValues(s,fileobjs,filenames)
-        listOfString = fileobjs[tablename].read().splitlines()
-        for var in listOfString:
-            token = var.split(" ")
-            s.insertFourValues(token,valueName)
 
-
-c = newConnection()
+c = new_connection()
 valueName = ["sortingtype","length","datatype","time"]
 valueType = f"(id serial PRIMARY KEY, {valueName[0]} VARCHAR(50), {valueName[1]} INTEGER, {valueName[2]} VARCHAR(50), {valueName[3]} float(6))"
 file = open("../output/Result.txt")
-if c.checkTableExist("Result") == False:
-    s = newTable("Result",c,valueType)
-    s.createTable()
+if c.check_table_exist("Result") == False:
+    s = new_table("Result",c,valueType)
+    s.create_table()
 else:
-    s = newTable("Result",c,valueType)
+    s = new_table("Result",c,valueType)
 listOfString = file.read().splitlines()
 for var in listOfString:
     token = var.split(" ")
-    s.insertFourValues(token,valueName)
+    s.insert_four_values(token,valueName)
 file.close()
-# tableNames = ["QuickSortResult","MergeSortResult","HeapSortResult", "RadixSortResult"]
-# fobj = openFile(tableNames)
-# checkTableExist(c,tableNames)
-# insertToDB(c,fobj,tableNames)
-# closeFile(fobj,tableNames)
-c.closeConnection()
+c.close_connection()
